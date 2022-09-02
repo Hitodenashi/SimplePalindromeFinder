@@ -97,9 +97,9 @@ namespace CodeTest
         {
             if (string.IsNullOrEmpty(paragraph)) return null;
 
-            var returnList = paragraph.ToLower().Replace(removeChar.ToString(), "").Split(splitChar).ToList();
-            returnList = returnList.Where(word => !string.IsNullOrEmpty(word)).ToList();
-            return returnList;
+            var returnList = paragraph.ToLower().Replace(removeChar.ToString(), "")
+                .Split(splitChar, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+            return returnList.ToList();
         }
 
         /// <summary> check how many palindromes exit in the list </summary>
