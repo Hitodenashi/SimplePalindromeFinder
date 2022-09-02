@@ -70,13 +70,18 @@ namespace CodeTest
             Console.WriteLine("".PadLeft(numLines, '\n'));
     }
 
+    /// <summary> class for handling Palindrome work (getting input, breaking into lists, counts, etc.)
     public class Palindrome
     {
+        /// <summary> user input for exiting program </summary>
         private static string EXITKEY = "exit";
+
+        /// <summary> user input string </summary>
         private string? _userInput;
 
         public Palindrome()
         {
+            // empty list to start
             _userInput = "";
         }
 
