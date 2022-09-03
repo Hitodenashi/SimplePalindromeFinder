@@ -26,7 +26,7 @@ If the user gave a valid letter to search, then the palindrome object is then us
 Finally, the console is paused, and waiting for user input, before clearing the screen to continuing the next iteration.
 
 
-###Palindrome - Class
+### Palindrome - Class
 Object that contains the functionality needed to take in user input, and create lists of words, and sentences, that can be used to search for any palindromes. This includes a private variable to hold the user input, as well as a private static variable to hold the text needed for the user to exit the program. 
 
 GetParagraph() - Function that prompts the user for text input, and then performs a ToLower(), and Trim(), function to create an expected format for text to be processed. Finally, this returns the object instance itself, in order to chain an IsExitKey() function call off of.
