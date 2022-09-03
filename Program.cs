@@ -4,9 +4,6 @@ namespace CodeTest
 {
     class Program
     {
-        /// <summary> exit key for user to enter to close app </summary>
-        public static string EXITKEY = "exit";
-
         static void Main(string[] args)
         {
             var _palindromeObject = new Palindrome();
