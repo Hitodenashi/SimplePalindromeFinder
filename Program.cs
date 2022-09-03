@@ -42,7 +42,7 @@ namespace CodeTest
                 {
                     // if the given char is somehow invalid, just continue
                     Console.WriteLine("Invalid input");
-                    PrintEmptyLines(3);
+                    Pause();
                     continue;
                 }
                 
@@ -60,14 +60,19 @@ namespace CodeTest
                     Console.WriteLine($"No words containing: {inputChar}");
                 }
 
-                // add spacing for next loop
-                PrintEmptyLines(3);
+                // pause and way for user input
+                Pause();
             }
         }
 
-        /// <summary> print a number of empty lines </summary>
-        public static void PrintEmptyLines(int numLines) =>
-            Console.WriteLine("".PadLeft(numLines, '\n'));
+        /// <summary> Pause the program, and wait for user input before clearing console </summary>
+        public static void Pause()
+        {
+            Console.Write("".PadLeft(3, '\n'));
+            Console.Write("Press any key to continue...");
+            Console.ReadKey();
+            Console.Clear();
+        }
     }
 
     /// <summary> class for handling Palindrome work (getting input, breaking into lists, counts, etc.)
@@ -98,10 +103,10 @@ namespace CodeTest
         public bool IsExitKey() => _userInput?.Equals(EXITKEY) ?? false;
 
         /// <summary> get a list of words from the paragraph </summary>
-        public List<string>? GetWordsList(string? paragraph) => GetSplitList('.', ' ');
+        public List<string>? GetWordsList() => GetSplitList('.', ' ');
 
         /// <summary> get a list of sentences from the paragraph </summary>
-        public List<string>? GetSentencesList(string? paragraph) => GetSplitList(' ', '.');
+        public List<string>? GetSentencesList() => GetSplitList(' ', '.');
 
         /// <summary> remove specified char, and split paragragh into list using given split char </summary>
         private List<string>? GetSplitList(char removeChar, char splitChar)
@@ -114,10 +119,10 @@ namespace CodeTest
         }
 
         /// <summary> Find Palindromes in the words List </summary>
-        public int FindNumberOfWordPalindromes() => FindNumberOfPalendromes(GetWordsList(_userInput));
+        public int FindNumberOfWordPalindromes() => FindNumberOfPalendromes(GetWordsList());
 
         /// <summary> Find palindromes in the sentences List </summary>
-        public int FindNumberOfSentencePalindromes() => FindNumberOfPalendromes(GetSentencesList(_userInput));
+        public int FindNumberOfSentencePalindromes() => FindNumberOfPalendromes(GetSentencesList());
 
         /// <summary> check how many palindromes exit in the list </summary>
         private int FindNumberOfPalendromes(List<string>? strings)
@@ -129,7 +134,7 @@ namespace CodeTest
         /// <summary> get a list of unique words, and how many times they appear in the paragraph </summary>
         public List<(string, int)>? GetUniqueWordCount()
         {
-            var words = GetWordsList(_userInput);
+            var words = GetWordsList();
             if (words is null) return null;
 
             var distinctCountList = new List<(string, int)>();
@@ -141,7 +146,7 @@ namespace CodeTest
 
         /// <summary> get a list of words containing the specified letter </summary>
         public List<string>? GetWordsContainingLetter(char letter) =>
-            GetWordsList(_userInput)?.Where(word => word.Contains(letter)).ToList() ?? null;
+            GetWordsList()?.Where(word => word.Contains(letter)).ToList() ?? null;
     }
 
     /// <summary> extension class for reversing a string
